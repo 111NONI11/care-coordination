@@ -1,0 +1,36 @@
+{
+  "name": "care-coordination",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Koordinácia starostlivosti o blízku osobu – care coordination web app",
+  "scripts": {
+    "dev": "concurrently -k -n api,web \"npm:dev:api\" \"npm:dev:web\"",
+    "dev:api": "node --disable-warning=ExperimentalWarning --watch server/index.js",
+    "dev:web": "vite",
+    "build": "tsc -b && vite build",
+    "start": "NODE_ENV=production node --disable-warning=ExperimentalWarning server/index.js",
+    "typecheck": "tsc -b",
+    "test": "node --disable-warning=ExperimentalWarning --test test/unit/*.test.js test/api/*.test.js",
+    "test:i18n": "node --test test/unit/i18n.test.js",
+    "test:e2e": "playwright test"
+  },
+  "engines": {
+    "node": ">=22.13"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^22.10.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "concurrently": "^9.1.0",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11"
+  }
+}

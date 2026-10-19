@@ -1,0 +1,14 @@
+# One-click deploy on Render (https://render.com): New → Blueprint → select this repository.
+services:
+  - type: web
+    name: care-coordination
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/config
+    envVars:
+      - key: COOKIE_SECURE
+        value: "1"
+      - key: DB_PATH
+        value: /tmp/care.db
+      - key: TRUST_PROXY
+        value: "1"
